@@ -15,14 +15,14 @@ class CreateCrawledPagesTable extends Migration
     {
         Schema::create('crawled_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
+            $table->string('hash');
+            $table->integer('number_pages_crawled');
             $table->integer('unique_images');
             $table->integer('unique_internal_links');
             $table->integer('unique_external_links');
             $table->float('page_load');
-            $table->integer('word_count');
-            $table->integer('title_length');
-            $table->string('http_status_code');
+            $table->float('word_count');
+            $table->float('title_length');
             $table->timestamps();
         });
     }

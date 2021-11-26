@@ -15,7 +15,9 @@ class CreateCrawlSessionsTable extends Migration
     {
         Schema::create('crawl_sessions', function (Blueprint $table) {
             $table->id();
-            $table->integer("pages_crawled");
+            $table->string('hash');
+            $table->string('url');
+            $table->string('http_status_code');
             $table->timestamps();
         });
     }
