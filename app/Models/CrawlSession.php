@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CrawlSession extends Model
 {
+    protected $fillable = ['hash','url','http_status_code'];
     use HasFactory;
 }
