@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Helpers;
-
 #gets internal and external links from $html
 function getLinks($html) {
     preg_match_all( '|<a.*?href=[\'"](.*?)[\'"].*?>|i',$html, $linkMatches );
