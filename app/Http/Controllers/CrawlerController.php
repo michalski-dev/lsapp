@@ -126,7 +126,13 @@ class CrawlerController extends Controller
         ]);
         $pages->save();
 
-        return view('welcome');
+        #query database for latest crawl session info
+        $crawledPages = CrawledPages::all()->sortByDesc('id')->take(1)->toArray();
+        $getLatestHash = CrawledPages::latest('id')->first();
+        $crawlSession = CrawlSession::all()->where('hash',$getLatestHash->hash)->toArray();
+
+        #return latest session data to welcome page
+        return view('welcome', compact('crawledPages'), compact('crawlSession'));
     }
 
     /**

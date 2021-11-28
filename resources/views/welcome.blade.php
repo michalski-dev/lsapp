@@ -28,7 +28,7 @@
         <h2>Agency Analytics Web Crawl</h2>
     </div>
     <div>
-        <h3>Crawl Results</h3>
+        <h3>Crawl Meta Results</h3>
     </div>    
     <div class="card">
         <div class="card-body">
@@ -43,24 +43,41 @@
                         <th>Avg Word Count</th>
                         <th>Avg Title Length</th>
                     </tr>
+                    @foreach($crawledPages as $row)
+                    <tr>
+                        <td>{{$row['number_pages_crawled']}}</td>
+                        <td>{{$row['unique_images']}}</td>
+                        <td>{{$row['unique_internal_links']}}</td>
+                        <td>{{$row['unique_external_links']}}</td>
+                        <td>{{$row['page_load']}}</td>
+                        <td>{{$row['word_count']}}</td>
+                        <td>{{$row['title_length']}}</td> 
+                    </tr>    
+                    @endforeach
                 </thead>
                 <tbody>
                 </tbody>
             </table>
             <div>
-                <h3>Pages Crawled</h3>
+                <h3>Crawl Session Pages</h3>
             </div>   
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Page</th>
+                        <th>Page URL</th>
                         <th>HTTP Status Code</th>
                     </tr>
+                    @foreach($crawlSession as $row)
+                    <tr>
+                        <td>{{$row['url']}}</td>
+                        <td>{{$row['http_status_code']}}</td>
+                    </tr>    
+                    @endforeach
                 </thead>
                 <tbody>
                 </tbody>
             </table>
         </div>
-    </div>                    
+    </div>    
 </body>
 </html>
